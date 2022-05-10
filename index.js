@@ -1,21 +1,17 @@
-const express = require('express');
-const mysql = require('mysql');
+const server = require('./server.js');
 
-const app = express();
+const startServer = async () => {
+  try {
+    const config = {
+      host: 'localhost',
+      port: 8080,
+    };
+    const app = await server(config);
 
-var connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'kshitij',
-  password: 'Display@124',
-  database: 'testdatabase',
-});
-
-connection.connect(err => {
-  if (err) {
-    throw err;
+    // await app(config);
+  } catch (err) {
+    console.log('server error', err);
   }
-  console.log('mysql connected');
-});
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
-});
+};
+
+startServer();
