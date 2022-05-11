@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 // const dataBase = require('./database.js');
-const routes = require('./src/routes/index');
+const routes = require('../routes/index');
 const app = async config => {
   const { host, port } = config;
   //initialize express
